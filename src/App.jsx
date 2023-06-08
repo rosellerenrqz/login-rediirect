@@ -8,7 +8,6 @@ const App = () => {
 
   useEffect(() => {
     const userLoggedInfo = localStorage.getItem("logged in");
-
     if (userLoggedInfo === "1") {
       setIsLoggedIn(true);
     }
@@ -17,7 +16,6 @@ const App = () => {
   const loginHandler = () => {
     localStorage.setItem("logged in", "1");
     setIsLoggedIn(true);
-    console.log("in app js");
   };
 
   const logoutHandler = () => {
