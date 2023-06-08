@@ -1,0 +1,29 @@
+.button {
+  font: inherit;
+  border: 1px solid #71c9ce;
+  background: #71c9ce;
+  color: white;
+  padding: 0.75rem 3.5rem;
+  font-size: 1.15rem;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #a6e3e9;
+  border-color: #a6e3e9;
+}
+
+.button:focus {
+  outline: none;
+}
+
+button:disabled,
+button:focus:disabled,
+button:hover:disabled,
+button:active:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: #666666;
+  cursor: not-allowed;
+}
