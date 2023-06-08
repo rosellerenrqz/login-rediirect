@@ -11,12 +11,15 @@ const App = () => {
     console.log("in app js");
   };
 
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <React.Fragment>
-      <MainHeader />
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
     </React.Fragment>
   );
