@@ -7,22 +7,32 @@ import Card from "../UI/Card/Card";
 const Login = (props) => {
   const [endteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
-  const [formIsValid, setFromIsValid] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState("");
+  const [passwordIsValid, setPasswordIsValid] = useState("");
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const emailChangeHandler = (e) => {
     setEnteredEmail(e.target.value);
 
-    setFromIsValid(
-      e.target.value.includes("") && enteredPassword.trim().length > 6
+    setFormIsValid(
+      e.target.value.includes("@") && enteredPassword.trim().length > 6
     );
   };
 
   const passwordChangeHandler = (e) => {
     setEnteredPassword(e.target.value);
 
-    setFromIsValid(
+    setFormIsValid(
       e.target.value.trim().length > 6 && endteredEmail.includes("@")
     );
+  };
+
+  const validateEmailHandler = () => {
+    setEmailIsValid(endteredEmail.includes("@"));
+  };
+
+  const validatePasswordHandler = () => {
+    setPasswordIsValid(enteredPassword.trim().length > 6);
   };
 
   const submitHandler = (e) => {
@@ -34,22 +44,32 @@ const Login = (props) => {
     <>
       <Card className={classes.login}>
         <form onSubmit={submitHandler}>
-          <div className={classes.control}>
+          <div
+            className={`${classes.control} ${
+              emailIsValid === false ? classes.invalid : ""
+            }`}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
+              placeholder="Email"
               value={endteredEmail}
               onChange={emailChangeHandler}
+              onBlur={validateEmailHandler}
             />
           </div>
-          <div className={classes.control}>
+          <div
+            className={`${classes.control} ${
+              passwordIsValid === false ? classes.invalid : ""
+            }`}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
+              placeholder="Password"
               value={enteredPassword}
               onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
             />
           </div>
           <div className={classes.actions}>

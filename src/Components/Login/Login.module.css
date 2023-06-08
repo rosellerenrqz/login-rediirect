@@ -20,6 +20,7 @@
 .control label {
   font-weight: bold;
   flex: 1;
+  margin: 0.5rem 0;
 }
 
 .control input {
@@ -32,4 +33,10 @@
 
 .actions {
   text-align: center;
+}
+
+.control.invalid input {
+  background-color: red;
+  border-color: red;
+  color: white;
 }
